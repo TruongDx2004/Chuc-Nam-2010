@@ -274,11 +274,21 @@ document.addEventListener('DOMContentLoaded', () => {
   function buildTitle() {
     const el = document.getElementById('heroTitle');
     if (!el) return;
-    const text = 'Chúc Mừng Sinh Nhật Hana';
+
+    // Thêm <br> trước Hana để ép xuống dòng
+    const text = 'Chúc Mừng Sinh Nhật<br>Hana';
+    el.style.fontSize = '2rem'; 
     el.innerHTML = text
       .split('')
-      .map((c, i) => `<span style="animation-delay:${i * 40}ms">${c === ' ' ? '&nbsp;' : c}</span>`)
-      .join('');
+      .map((c, i) => {
+        // Nếu là khoảng trắng, giữ nguyên &nbsp;
+        if (c === ' ') return `<span style="animation-delay:${i * 50}ms;">&nbsp;</span>`;
+        // Nếu gặp ký tự của thẻ <br>, chúng ta không bọc thẻ span (để tránh lỗi hiển thị)
+        return `<span style="animation-delay:${i * 50}ms;">${c}</span>`;
+      })
+      .join('')
+      // Sửa lại đoạn chuỗi bị tách của thẻ <br> sau khi join
+      .replace(/<span[^>]*><<\/span><span[^>]*>b<\/span><span[^>]*>r<\/span><span[^>]*>><\/span>/g, '<br>');
   }
 
   // ==========================================
@@ -302,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = vid.closest('.media-card');
     if (card) {
       card.addEventListener('mouseenter', () => {
-        vid.play().catch(() => {});
+        vid.play().catch(() => { });
       });
       card.addEventListener('mouseleave', () => {
         vid.pause();
@@ -315,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach((entry) => {
       const vid = entry.target;
       if (entry.isIntersecting) {
-        vid.play().catch(() => {});
+        vid.play().catch(() => { });
       } else {
         vid.pause();
       }
@@ -437,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wasPlayingBeforeVideo) {
       wasPlayingBeforeVideo = false;
       if (bgm) {
-        bgm.play().then(() => updateSoundUI(true)).catch(() => {});
+        bgm.play().then(() => updateSoundUI(true)).catch(() => { });
       } else {
         playMusicBoxFallback();
         updateSoundUI(true);
@@ -796,7 +806,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, i * 40);
       }
 
-      showToast('Bé ngoan nhất trần đời! Yêu Hana 3000 lần 💕', '🎉', 4000);
     }
   }
 
@@ -875,8 +884,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const rect = vResult.getBoundingClientRect();
     spawnHearts(rect.left + rect.width / 2, rect.top + 30, 12, true);
 
-    showToast(`Chúc mừng em rút được: ${v.title}!`, '🎁', 3500);
-
     if (btnDraw) btnDraw.textContent = 'Rút Thêm Thẻ Khác 🎲';
   }
 
@@ -907,7 +914,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function triggerLoveRain() {
-    showToast('✨ Em vừa mở khóa bí mật: Cơn mưa tình yêu dành riêng cho Hana! 💖', '✨', 4500);
     if (!isPlaying) toggleMusic();
 
     const symbols = ['💖', '💕', '🌸', '✨', '🍬', '🌷', '🎀', '⭐'];
@@ -1001,7 +1007,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, i * 60);
     }
 
-    showToast('💐 Bó hoa này là dành riêng cho em! Chúc mừng sinh nhật Hana!', '🎁', 4000);
   }
 
   function closeSurpriseModal() {
@@ -1038,10 +1043,10 @@ document.addEventListener('DOMContentLoaded', () => {
               }).then((conversionResult) => {
                 const url = URL.createObjectURL(conversionResult);
                 img.src = url;
-              }).catch(() => {});
+              }).catch(() => { });
             }
           })
-          .catch(() => {});
+          .catch(() => { });
       }
     });
   }
