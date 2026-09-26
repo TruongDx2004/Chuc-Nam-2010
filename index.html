@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hana — Chúc Mừng Sinh Nhật (19.10.2004)</title>
+  <link rel="icon" href="data:,">
+  
+  <!-- Google Fonts tối ưu 100% tiếng Việt: Be Vietnam Pro, Playfair Display, Lora -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Thư viện giải mã HEIC tự động cho trình duyệt -->
+  <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+
+  <!-- File CSS độc lập -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Hiệu ứng nền và con trỏ chuột -->
+  <canvas id="bg"></canvas>
+  <div class="grain"></div>
+  <div class="progress" id="progress"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- Cổng mở đầu (#gate) -->
+  <div id="gate" role="button" aria-label="Chạm để mở trang sinh nhật">
+    <div class="blob">
+      <svg viewBox="0 0 100 100">
+        <path fill="url(#g)" d="M50 5c25 0 45 20 45 45S75 95 50 95 5 75 5 50 25 5 50 5z"/>
+        <defs>
+          <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#1f6f5c"/>
+            <stop offset="1" stop-color="#e88aa0"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="num serif">22</div>
+    </div>
+    <p class="lead serif">có một món quà nhỏ đang chờ Hana</p>
+    <p class="sub">chạm vào để mở trang kỷ niệm</p>
+  </div>
+
+  <!-- Nội dung chính -->
+  <main id="main">
+    <!-- SECTION 1: HERO & BỘ ĐẾM YÊU NHAU -->
+    <section id="hero">
+      <div class="hero-avatar fade-up" title="Nhấn để xem ảnh chân dung (Nhấn 3 lần để mở quà bí mật!)">
+        <img src="assets/img/avt.jpg" alt="Chân dung Hana" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='assets/img/hana/hana.jpg';}">
+      </div>
+      <div class="kicker fade-up">gửi người anh thương · Hana</div>
+      <h1 id="heroTitle"></h1>
+      
+      <div class="date-pill fade-up d1">
+        <span>19.10.2004</span>
+        <span>·</span>
+        <span>Hana</span>
+      </div>
+
+      <!-- Đồng hồ đếm thời gian bên nhau từ 08/05/2023 -->
+      <div class="love-counter-box fade-up d2">
+        <div class="love-counter-label">Tụi mình đã đồng hành cùng nhau</div>
+        <div class="love-counter-timer" id="loveTimer">
+          <div class="timer-item">
+            <span class="timer-num" id="loveDays">0</span>
+            <span class="timer-unit">Ngày</span>
+          </div>
+          <div class="timer-item">
+            <span class="timer-num" id="loveHours">0</span>
+            <span class="timer-unit">Giờ</span>
+          </div>
+          <div class="timer-item">
+            <span class="timer-num" id="loveMinutes">0</span>
+            <span class="timer-unit">Phút</span>
+          </div>
+          <div class="timer-item">
+            <span class="timer-num" id="loveSeconds">0</span>
+            <span class="timer-unit">Giây</span>
+          </div>
+        </div>
+        <div class="love-since">kể từ ngày định mệnh 08.05.2023 💖</div>
+      </div>
+
+      <!-- Nhịp tim đập tương tác (Easter Egg) -->
+      <div class="heartbeat-widget fade-up d3" id="heartbeatWidget" title="Chạm để kiểm tra nhịp tim của anh">
+        <span class="heartbeat-icon">💓</span>
+        <span id="heartbeatText">Nhịp tim của anh khi cạnh Hana: 135 bpm</span>
+      </div>
+
+      <div class="hint fade-up d3">
+        <div class="scroll-line"></div>
+        cuộn xuống để lật giở từng trang kỷ niệm
+      </div>
+    </section>
+
+    <!-- SECTION 2: NGÀY EM CÒN THƠ BÉ (HOIHO - NĂM 2004) -->
+    <section id="hoinho-section">
+      <div class="section-tag fade-up">Ký ức năm 2004</div>
+      <h2 class="section-title fade-up d1">Ngày Em Còn Thơ Bé</h2>
+      <p class="section-desc fade-up d2">
+        Năm 2004, có một thiên thần nhỏ cất tiếng khóc chào đời. Cô bé với nụ cười ngây ngô ngày ấy, sau này đã trở thành cả thế giới dịu dàng của anh.
+      </p>
+
+      <div class="polaroid-grid">
+        <!-- Ảnh hoinho.jpg -->
+        <div class="polaroid-card fade-up" data-media-type="image" data-src="assets/img/hoiho/hoinho.jpg" data-caption="Cô bé hạt tiêu năm 2004 — Đôi mắt tròn xoe ngơ ngác nhìn thế giới">
+          <div class="polaroid-pin"></div>
+          <div class="polaroid-img-wrap">
+            <img src="assets/img/hoiho/hoinho.jpg" alt="Hana hồi nhỏ 1" class="polaroid-img" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Cô bé hạt tiêu năm 2004</div>
+          <div class="polaroid-date">Kỷ niệm thơ ấu ✦ 2004</div>
+        </div>
+
+        <!-- Ảnh hoinho1.jpg -->
+        <div class="polaroid-card fade-up d1" data-media-type="image" data-src="assets/img/hoiho/hoinho1.jpg" data-caption="Nụ cười hồn nhiên trong veo — Vẻ đáng yêu từ bé đã không lẫn vào đâu được">
+          <div class="polaroid-pin"></div>
+          <div class="polaroid-img-wrap">
+            <img src="assets/img/hoiho/hoinho1.jpg" alt="Hana hồi nhỏ 2" class="polaroid-img" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Nụ cười trong veo ngày ấy</div>
+          <div class="polaroid-date">Kỷ niệm thơ ấu ✦ Ngây ngô</div>
+        </div>
+
+        <!-- Ảnh hoinho2.jpg -->
+        <div class="polaroid-card fade-up d2" data-media-type="image" data-src="assets/img/hoiho/hoinho2.jpg" data-caption="Thiên thần nhỏ dễ thương — Từng bước lớn lên để hôm nay gặp anh">
+          <div class="polaroid-pin"></div>
+          <div class="polaroid-img-wrap">
+            <img src="assets/img/hoiho/hoinho2.jpg" alt="Hana hồi nhỏ 3" class="polaroid-img" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Thiên thần nhỏ dễ thương</div>
+          <div class="polaroid-date">Kỷ niệm thơ ấu ✦ Đáng yêu</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: HANA CỦA HIỆN TẠI (NÀNG THƠ) -->
+    <section id="hana-section">
+      <div class="section-tag fade-up">Nàng thơ của anh</div>
+      <h2 class="section-title fade-up d1">Hana Của Tuổi Đẹp Nhất</h2>
+      <p class="section-desc fade-up d2">
+        Thời gian trôi qua, cô bé năm nào nay đã là một thiếu nữ dịu dàng, xinh đẹp. Cảm ơn em vì đã lớn lên thật rực rỡ và bình an.
+      </p>
+
+      <div class="media-grid">
+        <!-- Ảnh hana.jpg -->
+        <div class="media-card fade-up" data-media-type="image" data-src="assets/img/hana/hana.jpg" data-caption="Ánh mắt biết cười — Lúc nào cũng làm tim anh xao xuyến">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Hình ảnh</span>
+            <img src="assets/img/hana/hana.jpg" alt="Hana rực rỡ" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Ánh Mắt Biết Cười</h3>
+            <p class="media-desc">Chỉ cần em mỉm cười là mọi mệt mỏi trong anh đều tan biến.</p>
+          </div>
+        </div>
+
+        <!-- Ảnh hana01.JPG -->
+        <div class="media-card fade-up d1" data-media-type="image" data-src="assets/img/hana/hana01.JPG" data-caption="Nét đẹp trong trẻo dịu dàng — Mỗi góc hình đều ngập tràn sự đáng yêu">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Hình ảnh</span>
+            <img src="assets/img/hana/hana01.JPG" alt="Hana trong trẻo" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Nét Đẹp Trong Trẻo</h3>
+            <p class="media-desc">Vẻ đẹp tự nhiên, mộc mạc mà cuốn hút nhất trong mắt anh.</p>
+          </div>
+        </div>
+
+        <!-- Video hana.mp4 -->
+        <div class="media-card fade-up d2" data-media-type="video" data-src="assets/img/hana/hana.mp4" data-caption="Thước phim ngắn đáng yêu của Hana — Tự nhiên và tràn đầy sức sống">
+          <div class="media-card-img-wrap">
+            <span class="media-badge" style="background:#e88aa0;color:#fff;">▶ Video</span>
+            <div class="video-play-indicator">
+              <div class="play-circle">▶</div>
+            </div>
+            <video src="assets/img/hana/hana.mp4" class="media-card-video" muted loop playsinline preload="metadata"></video>
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Khoảnh Khắc Đáng Yêu</h3>
+            <p class="media-desc">Chạm vào để xem video sống động của Hana nhé!</p>
+          </div>
+        </div>
+
+        <!-- Ảnh hana02.jpg -->
+        <div class="media-card fade-up" data-media-type="image" data-src="assets/img/hana/hana02.jpg" data-caption="Nụ cười rạng rỡ của em — Tỏa sáng như ánh nắng sớm mai">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Hình ảnh</span>
+            <img src="assets/img/hana/hana02.jpg" alt="Hana rạng rỡ" class="media-card-img" loading="lazy" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='assets/img/hana/hana.jpg';}">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Nụ Cười Tỏa Sáng</h3>
+            <p class="media-desc">Nụ cười ngọt ngào làm tan chảy mọi sự căng thẳng trong cuộc sống.</p>
+          </div>
+        </div>
+
+        <!-- Video hana1.mp4 -->
+        <div class="media-card fade-up d1" data-media-type="video" data-src="assets/img/hana/hana1.mp4" data-caption="Thước phim Hana vui tươi — Tràn ngập tiếng cười và năng lượng tích cực">
+          <div class="media-card-img-wrap">
+            <span class="media-badge" style="background:#e88aa0;color:#fff;">▶ Video</span>
+            <div class="video-play-indicator">
+              <div class="play-circle">▶</div>
+            </div>
+            <video src="assets/img/hana/hana1.mp4" class="media-card-video" muted loop playsinline preload="metadata"></video>
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Năng Lượng Tươi Vui</h3>
+            <p class="media-desc">Thước phim ghi lại nét tinh nghịch, đáng yêu của em.</p>
+          </div>
+        </div>
+
+        <!-- Ảnh hana03.jpg -->
+        <div class="media-card fade-up d2" data-media-type="image" data-src="assets/img/hana/hana03.jpg" data-caption="Duyên dáng tuổi 22 — Một bông hoa ngát hương rực rỡ nhất">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Hình ảnh</span>
+            <img src="assets/img/hana/hana03.jpg" alt="Hana duyên dáng" class="media-card-img" loading="lazy" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='assets/img/hana/hana1.jpg';}">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Duyên Dáng Tuổi 22</h3>
+            <p class="media-desc">Từng đường nét đều toát lên vẻ dịu dàng, nữ tính.</p>
+          </div>
+        </div>
+
+        <!-- Ảnh hana1.jpg -->
+        <div class="media-card fade-up" data-media-type="image" data-src="assets/img/hana/hana1.jpg" data-caption="Dịu dàng từng khoảnh khắc — Vẻ đẹp bình yên khiến anh nhớ mãi">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Hình ảnh</span>
+            <img src="assets/img/hana/hana1.jpg" alt="Hana dịu dàng" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Bình Yên Bên Em</h3>
+            <p class="media-desc">Một góc nhìn rất thơ của em mà anh luôn muốn lưu giữ.</p>
+          </div>
+        </div>
+
+        <!-- Ảnh haha2.jpg -->
+        <div class="media-card fade-up d1" data-media-type="image" data-src="assets/img/hana/haha2.jpg" data-caption="Nụ cười rạng rỡ — Dù anh có chọc em thế nào thì em cười vẫn là xinh nhất">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Hình ảnh</span>
+            <img src="assets/img/hana/haha2.jpg" alt="Hana nụ cười" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Nụ Cười Tỏa Nắng</h3>
+            <p class="media-desc">Nụ cười khi không cần tạo dáng — luôn là lúc em chân thật và dễ thương nhất.</p>
+          </div>
+        </div>
+
+        <!-- Ảnh hana3.jpg -->
+        <div class="media-card fade-up d2" data-media-type="image" data-src="assets/img/hana/hana3.jpg" data-caption="Cô gái nhỏ trong lòng anh — Xứng đáng có được mọi điều ngọt ngào nhất">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Hình ảnh</span>
+            <img src="assets/img/hana/hana3.jpg" alt="Hana ngọt ngào" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Nàng Thơ Rực Rỡ</h3>
+            <p class="media-desc">Chúc cho tuổi mới của em luôn ngập tràn ánh nắng và hạnh phúc.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: HÀNH TRÌNH CHÚNG MÌNH (TOGETHER TỪ 08/05/2023) -->
+    <section id="together-section">
+      <div class="section-tag fade-up">Từ ngày 08.05.2023</div>
+      <h2 class="section-title fade-up d1">Hành Trình Của Chúng Mình</h2>
+      <p class="section-desc fade-up d2">
+        Cùng nhau học tập, cùng nhau sẻ chia từng niềm vui nhỏ bé. Cảm ơn em vì đã luôn nắm chặt tay anh trên từng chặng đường.
+      </p>
+
+      <!-- Bộ lọc Tab danh mục -->
+      <div class="filter-tabs fade-up d1">
+        <button class="filter-btn active" data-filter="all">Tất Cả Kỷ Niệm (17)</button>
+        <button class="filter-btn" data-filter="photo">Hình Ảnh (11)</button>
+        <button class="filter-btn" data-filter="video">Thước Phim Video (6)</button>
+      </div>
+
+      <div class="media-grid">
+        <!-- 1. Ảnh tgt.jpg -->
+        <div class="media-card fade-up" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt.jpg" data-caption="Tụi mình cùng nhau học tập — Những ngày tháng bên bàn học đầy ắp tiếng cười">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt.jpg" alt="Chúng mình 1" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Cùng Nhau Học Tập</h3>
+            <p class="media-desc">Những buổi học bài cùng nhau, vừa áp lực thi cử nhưng lại ngập tràn tiếng cười.</p>
+          </div>
+        </div>
+
+        <!-- 2. Video tgt.mp4 -->
+        <div class="media-card fade-up d1" data-category="video" data-media-type="video" data-src="assets/img/tgt/tgt.mp4" data-caption="Thước phim kỷ niệm 1 — Từng giây phút bên em đều là vô giá">
+          <div class="media-card-img-wrap">
+            <span class="media-badge" style="background:#e88aa0;color:#fff;">▶ Video</span>
+            <div class="video-play-indicator">
+              <div class="play-circle">▶</div>
+            </div>
+            <video src="assets/img/tgt/tgt.mp4" class="media-card-video" muted loop playsinline preload="metadata"></video>
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Thước Phim Hai Đứa</h3>
+            <p class="media-desc">Chạm để mở toàn màn hình và nghe lại những thanh âm thân thương.</p>
+          </div>
+        </div>
+
+        <!-- 5. Video tgt3.mp4 -->
+        <div class="media-card fade-up d1" data-category="video" data-media-type="video" data-src="assets/img/tgt/tgt3.mp4" data-caption="Thước phim kỷ niệm 4 — Những khoảnh khắc nhí nhố đáng yêu của hai đứa">
+          <div class="media-card-img-wrap">
+            <span class="media-badge" style="background:#e88aa0;color:#fff;">▶ Video</span>
+            <div class="video-play-indicator">
+              <div class="play-circle">▶</div>
+            </div>
+            <video src="assets/img/tgt/tgt3.mp4" class="media-card-video" muted loop playsinline preload="metadata"></video>
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Kỷ Niệm Nhí Nhố</h3>
+            <p class="media-desc">Những thước phim lưu lại sự hồn nhiên, ngây ngô khi cạnh nhau.</p>
+          </div>
+        </div>
+
+        <!-- 6. Video tht4.mp4 -->
+        <div class="media-card fade-up d2" data-category="video" data-media-type="video" data-src="assets/img/tgt/tht4.mp4" data-caption="Thước phim kỷ niệm 5 — Hạnh phúc giản dị trong từng giây phút">
+          <div class="media-card-img-wrap">
+            <span class="media-badge" style="background:#e88aa0;color:#fff;">▶ Video</span>
+            <div class="video-play-indicator">
+              <div class="play-circle">▶</div>
+            </div>
+            <video src="assets/img/tgt/tht4.mp4" class="media-card-video" muted loop playsinline preload="metadata"></video>
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Hạnh Phúc Giản Đơn</h3>
+            <p class="media-desc">Thước phim ngọt ngào mà anh luôn muốn mở ra xem lại.</p>
+          </div>
+        </div>
+
+        <!-- 7. Video tgt5.mp4 -->
+        <div class="media-card fade-up" data-category="video" data-media-type="video" data-src="assets/img/tgt/tgt5.mp4" data-caption="Thước phim kỷ niệm 6 — Cảm ơn vì đã luôn đồng hành cùng anh">
+          <div class="media-card-img-wrap">
+            <span class="media-badge" style="background:#e88aa0;color:#fff;">▶ Video</span>
+            <div class="video-play-indicator">
+              <div class="play-circle">▶</div>
+            </div>
+            <video src="assets/img/tgt/tgt5.mp4" class="media-card-video" muted loop playsinline preload="metadata"></video>
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Đồng Hành Bên Nhau</h3>
+            <p class="media-desc">Từng kỷ niệm đều khắc sâu trong tim anh.</p>
+          </div>
+        </div>
+
+        <!-- 8. Ảnh tgt2.jpg -->
+        <div class="media-card fade-up d1" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt2.jpg" data-caption="Bình yên là khi có em ở bên — Chẳng cần nói nhiều, chỉ cần cạnh nhau">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt2.jpg" alt="Chúng mình 2" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Bình Yên Của Anh</h3>
+            <p class="media-desc">Có những ngày chỉ cần ngồi bên em, ngắm nhìn em là lòng thấy an yên.</p>
+          </div>
+        </div>
+
+        <!-- 9. Ảnh tgt3.jpg -->
+        <div class="media-card fade-up d2" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt3.jpg" data-caption="Những buổi hẹn hò giản dị — Mọi góc phố đi qua đều trở nên ấm áp lạ kỳ">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt3.jpg" alt="Chúng mình 3" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Những Hẹn Hò Nhỏ</h3>
+            <p class="media-desc">Chỉ là những quán quen, những món ăn đơn giản mà lần nào cũng vui.</p>
+          </div>
+        </div>
+
+        <!-- 10. Ảnh tgt4.jpg -->
+        <div class="media-card fade-up" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt4.jpg" data-caption="Những nụ cười ngây ngô của hai đứa — Lúc nào cũng nhí nhố bên nhau">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt4.jpg" alt="Chúng mình 4" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Những Lần Nhí Nhố</h3>
+            <p class="media-desc">Cứ ở cạnh nhau là bao nhiêu sự ngô nghê, trẻ con lại lộ ra hết.</p>
+          </div>
+        </div>
+
+        <!-- 11. Ảnh tgt5.jpg -->
+        <div class="media-card fade-up d1" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt5.jpg" data-caption="Cùng trải qua những niềm vui — Từng cột mốc nhỏ đều có sự đồng hành của em">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt5.jpg" alt="Chúng mình 5" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Sẻ Chia Niềm Vui</h3>
+            <p class="media-desc">Có chuyện gì vui anh cũng muốn chạy đến kể cho em nghe đầu tiên.</p>
+          </div>
+        </div>
+
+        <!-- 12. Ảnh tgt6.jpg -->
+        <div class="media-card fade-up d2" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt6.jpg" data-caption="Đồng điệu trong từng khoảnh khắc — Cảm ơn vì đã luôn thấu hiểu và sẻ chia">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt6.jpg" alt="Chúng mình 6" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Sự Đồng Điệu</h3>
+            <p class="media-desc">Chỉ cần nhìn ánh mắt là biết người kia đang nghĩ gì.</p>
+          </div>
+        </div>
+
+        <!-- 13. Ảnh tgt7.jpg -->
+        <div class="media-card fade-up" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt7.jpg" data-caption="Những cái nắm tay thật chặt — Cùng nhau vượt qua mọi thử thách">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt7.jpg" alt="Chúng mình 7" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Nắm Tay Thật Chặt</h3>
+            <p class="media-desc">Mong rằng dù sau này có bão giông thế nào, tay mình vẫn không rời.</p>
+          </div>
+        </div>
+
+        <!-- 14. Ảnh tgt8.jpg -->
+        <div class="media-card fade-up d1" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt8.jpg" data-caption="Tương lai phía trước — Anh mong chặng đường nào cũng có em bên cạnh">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt8.jpg" alt="Chúng mình 8" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Hướng Về Tương Lai</h3>
+            <p class="media-desc">Từ ngày 08/05/2023 đến muôn ngày sau, anh vẫn sẽ luôn chọn em.</p>
+          </div>
+        </div>
+
+        <!-- 15. Ảnh tgt9.jpg -->
+        <div class="media-card fade-up d2" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt9.jpg" data-caption="Những bước chân cùng đi qua năm tháng — Từng kỷ niệm đều đáng trân trọng">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt9.jpg" alt="Chúng mình 9" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Dấu Chân Kỷ Niệm</h3>
+            <p class="media-desc">Những khoảnh khắc giản dị bên em luôn là phần đẹp nhất.</p>
+          </div>
+        </div>
+
+        <!-- 16. Ảnh tgt10.jpg -->
+        <div class="media-card fade-up" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt10.jpg" data-caption="Nụ cười hạnh phúc của hai chúng mình — Rực rỡ và ấm áp">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt10.jpg" alt="Chúng mình 10" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Nụ Cười Hạnh Phúc</h3>
+            <p class="media-desc">Khoảnh khắc ngập tràn niềm vui của hai đứa mình.</p>
+          </div>
+        </div>
+
+        <!-- 17. Ảnh tgt11.jpg -->
+        <div class="media-card fade-up d1" data-category="photo" data-media-type="image" data-src="assets/img/tgt/tgt11.jpg" data-caption="Mỗi khoảnh khắc bên em đều là vô giá — Cảm ơn vì em đã luôn ở đây">
+          <div class="media-card-img-wrap">
+            <span class="media-badge">Kỷ niệm</span>
+            <img src="assets/img/tgt/tgt11.jpg" alt="Chúng mình 11" class="media-card-img" loading="lazy">
+          </div>
+          <div class="media-info">
+            <h3 class="media-title">Khoảnh Khắc Vô Giá</h3>
+            <p class="media-desc">Mỗi giây phút bên em đều là điều anh trân trọng nhất cuộc đời.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: BỨC THƯ TỪ TRÁI TIM (LỜI TỰ BẠCH CHÂN THÀNH) -->
+    <section id="letter-section">
+      <div class="letter-wrapper fade-up">
+        <div class="letter-wax-seal">H</div>
+        <div class="letter-salutation">Gửi Hana — cô gái sinh năm 2004 của anh,</div>
+        
+        <div class="letter-body">
+          <p>
+            Anh biết, anh không phải là một người đàn ông hoàn hảo hay tuyệt vời như bao người khác ngoài kia. Anh vụng về, chẳng giỏi nói những lời ngọt ngào có cánh.
+          </p>
+          <p>
+            Anh lại còn là người <strong>hay chê bai em, hay kiếm cớ chọc cho em hờn dỗi</strong>, làm em phụng phịu buồn... rồi đôi khi lại làm em bật cười ngớ ngẩn :)
+          </p>
+          <p>
+            Thế nhưng, giữa cuộc đời vội vã này, <strong>em vẫn luôn ở bên anh</strong>. Em chưa một lần làm anh thấy buồn hay thất vọng. Em bao dung cho những tính xấu của anh, cùng anh ngồi học bài hàng giờ liền, cùng anh trải qua từng niềm vui nhỏ bé nhất.
+          </p>
+          <p>
+            Kể từ ngày <strong>08 tháng 05 năm 2023</strong> định mệnh ấy, cuộc sống của anh đã có thêm một màu sắc rực rỡ mang tên Hana. Cảm ơn em vì đã đến, cảm ơn em vì đã kiên nhẫn yêu thương anh nhiều đến thế.
+          </p>
+          <p>
+            Tuổi mới, anh chẳng mong gì hơn ngoài việc em luôn được mạnh khỏe, bình an và ngập tràn nụ cười. Dù mai này ra sao, hãy nhớ rằng luôn có một người sẵn sàng làm em cười và che chở cho em.
+          </p>
+        </div>
+
+        <div class="letter-signature">
+          — Người luôn chọc em nhưng thương em nhất đời
+        </div>
+      </div>
+    </section>
+    <!-- SECTION 5.2: TỪ ĐIỂN GIẢI MÃ: KHI ANH CHỌC EM -->
+    <section id="decoder-section">
+      <div class="section-tag fade-up">Giải mã sự thật</div>
+      <h2 class="section-title fade-up d1">Khi Anh Chọc Em: Miệng Nói vs. Trong Lòng</h2>
+      <p class="section-desc fade-up d2">
+        Mỗi lần anh chê bai hay chọc ghẹo em, thực ra trong đầu anh đang nghĩ gì? Chạm hoặc rê chuột vào từng thẻ để lật mặt kẻ giả vờ nhé!
+      </p>
+
+      <div class="decoder-grid">
+        <!-- Thẻ 1 -->
+        <div class="decoder-card fade-up">
+          <div class="decoder-inner">
+            <div class="decoder-front">
+              <span class="decoder-badge">🗣️ Miệng anh bảo</span>
+              <div class="decoder-say">"Ối dồi ôi, Pự pự hự hự"</div>
+              <div class="decoder-hint">✦ Chạm để xem sự thật</div>
+            </div>
+            <div class="decoder-back">
+              <span class="decoder-badge">💖 Sự thật trong lòng</span>
+              <div class="decoder-truth">"Thấy em đáng yêu, dễ thương như em pé 3 tủi."</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ 2 -->
+        <div class="decoder-card fade-up d1">
+          <div class="decoder-inner">
+            <div class="decoder-front">
+              <span class="decoder-badge">🗣️ Miệng anh bảo</span>
+              <div class="decoder-say">"Học bài đi, chơi game ít thâu"</div>
+              <div class="decoder-hint">✦ Chạm để xem sự thật</div>
+            </div>
+            <div class="decoder-back">
+              <span class="decoder-badge">💖 Sự thật trong lòng</span>
+              <div class="decoder-truth">"Học đâu không thấy, suốt ngày ma với chả sói"</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ 3 -->
+        <div class="decoder-card fade-up d2">
+          <div class="decoder-inner">
+            <div class="decoder-front">
+              <span class="decoder-badge">🗣️ Miệng anh bảo</span>
+              <div class="decoder-say">"Đi ngủ giùm"</div>
+              <div class="decoder-hint">✦ Chạm để xem sự thật</div>
+            </div>
+            <div class="decoder-back">
+              <span class="decoder-badge">💖 Sự thật trong lòng</span>
+              <div class="decoder-truth">"Ý là đi ngủ giùm cái, mai đi làm nữa"</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5.3: MÁY RÚT PHIẾU ĐẶC QUYỀN TÌNH YÊU -->
+    <section id="voucher-section">
+      <div class="section-tag fade-up">Quà tặng độc quyền</div>
+      <h2 class="section-title fade-up d1">Máy Rút Phiếu Đặc Quyền Sinh Nhật</h2>
+      <p class="section-desc fade-up d2">
+        Mỗi sinh nhật chỉ có một lần! Chạm vào hộp quà để rút những chiếc vé đặc quyền chỉ dành riêng cho bạn gái của anh.
+      </p>
+
+      <div class="voucher-box fade-up">
+        <div class="gift-box-icon" id="giftBoxIcon" title="Bấm vào hộp quà">🎁</div>
+        <br>
+        <button class="btn-draw-voucher" id="btnDrawVoucher">Rút 1 Thẻ Đặc Quyền Hôm Nay ✨</button>
+
+        <!-- Thẻ hiển thị kết quả rút -->
+        <div class="voucher-result-card" id="voucherResult">
+          <span class="voucher-badge" id="vBadge">Đặc Quyền #1</span>
+          <h3 class="voucher-title" id="vTitle">Phiếu Miễn Chê Bai 24 Giờ</h3>
+          <p class="voucher-desc" id="vDesc">Nội dung phiếu...</p>
+          <div class="voucher-footer">
+            <span>Áp dụng: Vô thời hạn</span>
+            <span>Ký tên: Người yêu của em</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: PUZZLE & TƯƠNG TÁC TUỔI -->
+    <section id="puzzle">
+      <h2 class="fade-up serif">một cánh cửa nhỏ khác</h2>
+      <p class="hintline fade-up d1">gõ tên của em vào đây</p>
+      <input type="text" id="puzzleInput" placeholder=". . ." autocomplete="off">
+      <p class="reveal serif" id="puzzleReveal">
+        Đúng rồi — vì mọi điều đẹp đẽ trong trang này đều bắt đầu từ một cái tên: <strong>Hana</strong>. Cảm ơn em đã là một phần tuyệt vời nhất trong cuộc đời anh!
+      </p>
+    </section>
+
+    <section id="peak">
+      <h2 class="fade-up">Sinh nhật tuổi <span class="h22 serif" id="h22" title="Chạm vào em nhé!">22</span> của cô gái năm 2004 xứng đáng được nhớ mãi.</h2>
+      <p class="tap fade-up d1">chạm vào số 22 để nhận thêm tim</p>
+    </section>
+
+    <!-- SECTION 7: LỜI CHÚC, THẢ HOA & MÓN QUÀ BẤT NGỜ (BATNGO.JPG) -->
+    <section id="wish">
+      <div class="kicker fade-up">lời chúc sinh nhật</div>
+      <h2 class="fade-up d1">Sinh nhật thật hạnh phúc nhé, Hana!</h2>
+      <div class="countdown fade-up d2" id="countdown"></div>
+      
+      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;align-items:center;">
+        <button class="petal-btn fade-up d3" id="petalBtn">🌸 Thả một chút yêu thương</button>
+      </div>
+
+      <!-- NÚT BẬT MÍ MÓN QUÀ BẤT NGỜ (TẶNG HOA) -->
+      <div class="special-gift-wrap fade-up d3">
+        <button class="secret-flower-btn" id="secretFlowerBtn" title="Chạm để mở món quà bí mật">
+          <span class="flower-icon">💐</span>
+          <span>Món quà bất ngờ cuối cùng dành tặng em</span>
+          <span class="sparkle-tag">Chạm để mở ✨</span>
+        </button>
+      </div>
+
+      <div class="signature fade-up d3">
+        — Mong ngày 19.10 mỗi năm trôi qua thật chậm, để anh được chúc mừng sinh nhật em thật lâu.
+      </div>
+    </section>
+  </main>
+
+  <!-- Nút điều khiển âm thanh -->
+  <button class="sound-toggle" id="soundBtn" aria-label="Bật hoặc tắt nhạc nền" title="Phím tắt: M">
+    <div class="music-waves" aria-hidden="true">
+      <span class="music-bar"></span>
+      <span class="music-bar"></span>
+      <span class="music-bar"></span>
+      <span class="music-bar"></span>
+    </div>
+    <span class="sound-text">Nhạc: Tắt</span>
+  </button>
+
+  <!-- Thẻ âm thanh -->
+  <audio id="bgm" loop preload="auto">
+    <source src="assets/music/bgm.mp3" type="audio/mpeg">
+    <source src="assets/music/bgm.wav" type="audio/wav">
+  </audio>
+
+  <!-- Lightbox Modal HD (Hỗ trợ cả Xem Ảnh và Video mượt mà có Next / Prev) -->
+  <div class="lightbox-modal" id="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Đóng">&times;</button>
+    
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Trước">&#10094;</button>
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Sau">&#10095;</button>
+
+    <div class="lightbox-content">
+      <div class="lightbox-media-container" id="lightboxMediaContainer">
+        <!-- JS sẽ chèn <img> hoặc <video> vào đây -->
+      </div>
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- MODAL BẤT NGỜ (BỨC ẢNH ANH TẶNG HOA CHO EM - BATNGO.JPG) -->
+  <div class="surprise-modal" id="surpriseModal" role="dialog" aria-modal="true">
+    <div class="surprise-modal-backdrop" id="surpriseBackdrop"></div>
+    <div class="surprise-modal-dialog">
+      <button class="surprise-modal-close" id="surpriseClose" aria-label="Đóng món quà">&times;</button>
+      <div class="surprise-flower-badge">💐 MÓN QUÀ BẤT NGỜ 💐</div>
+      
+      <div class="surprise-img-frame">
+        <img src="assets/img/batngo.jpg" alt="Khoảnh khắc anh tặng hoa cho Hana" class="surprise-img">
+      </div>
+
+      <div class="surprise-text-wrap">
+        <h3 class="surprise-title">Dành tặng cô gái tuyệt vời nhất của anh</h3>
+        <p class="surprise-quote">
+          "Bó hoa này tuy không thể tươi mãi mãi, nhưng tình cảm và sự chân thành anh dành cho Hana thì sẽ luôn vẹn nguyên như ngày đầu tiên 💐"
+        </p>
+        <p class="surprise-sub">
+          Cảm ơn em vì đã đến, đã bao dung cho những lần anh chê bai, chọc ghẹo và luôn chọn ở bên anh từ ngày 08.05.2023 đến nay. Chúc cô gái tuổi 22 của anh một đời bình an và ngập tràn hạnh phúc!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hộp thông báo ngọt ngào Toast Alert -->
+  <div class="sweet-toast" id="sweetToast"></div>
+
+  <!-- File JavaScript độc lập -->
+  <script src="script.js" defer></script>
+</body>
+</html>
